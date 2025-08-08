@@ -1,4 +1,5 @@
 {
+  "homepage": "https://DOrlov74.github.io/ecommerce",
   "name": "ecommerce",
   "version": "0.1.0",
   "private": true,
@@ -60,6 +61,7 @@
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts eject",
     "eject": "react-scripts eject",
+    "predeploy": "react-scripts --openssl-legacy-provider build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
