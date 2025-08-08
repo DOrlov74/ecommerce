@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
-
+import ProductCard from "./ProductCard";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -107,54 +107,62 @@ const Products = () => {
           </button>
         </div>
 
-        {filter.map((product) => {
-          return (
-            <div
-              id={product.id}
-              key={product.id}
-              className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4"
-            >
-              <div className="card text-center h-100" key={product.id}>
-                <img
-                  className="card-img-top p-3"
-                  src={product.image}
-                  alt="Card"
-                  height={300}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">
-                    {product.title.substring(0, 12)}...
-                  </h5>
-                  <p className="card-text">
-                    {product.description.substring(0, 90)}...
-                  </p>
-                </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item lead">$ {product.price}</li>
-                  {/* <li className="list-group-item">Dapibus ac facilisis in</li>
-                    <li className="list-group-item">Vestibulum at eros</li> */}
-                </ul>
-                <div className="card-body">
-                  <Link
-                    to={"/product/" + product.id}
-                    className="btn btn-dark m-1"
-                  >
-                    Buy Now
-                  </Link>
-                  <button
-                    className="btn btn-dark m-1"
-                    onClick={() => {
-                      toast.success("Added to cart");
-                      addProduct(product);
-                    }}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
+        <div className="row">
+          {filter.map((product) => {
+            return (
+              <div
+                key={product.id}
+                className="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4"
+              >
+                <ProductCard product={product} />
               </div>
-            </div>
-          );
-        })}
+              // <div
+              //   id={product.id}
+              //   key={product.id}
+              //   className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4"
+              // >
+              //   <div className="card text-center h-100" key={product.id}>
+              //     <img
+              //       className="card-img-top p-3"
+              //       src={product.image}
+              //       alt="Card"
+              //       height={300}
+              //     />
+              //     <div className="card-body">
+              //       <h5 className="card-title">
+              //         {product.title.substring(0, 12)}...
+              //       </h5>
+              //       <p className="card-text">
+              //         {product.description.substring(0, 90)}...
+              //       </p>
+              //     </div>
+              //     <ul className="list-group list-group-flush">
+              //       <li className="list-group-item lead">$ {product.price}</li>
+              //       {/* <li className="list-group-item">Dapibus ac facilisis in</li>
+              //       <li className="list-group-item">Vestibulum at eros</li> */}
+              //     </ul>
+              //     <div className="card-body">
+              //       <Link
+              //         to={"/product/" + product.id}
+              //         className="btn btn-dark m-1"
+              //       >
+              //         Buy Now
+              //       </Link>
+              //       <button
+              //         className="btn btn-dark m-1"
+              //         onClick={() => {
+              //           toast.success("Added to cart");
+              //           addProduct(product);
+              //         }}
+              //       >
+              //         Add to Cart
+              //       </button>
+              //     </div>
+              //   </div>
+              // </div>
+            );
+          })}
+        </div>
       </>
     );
   };
